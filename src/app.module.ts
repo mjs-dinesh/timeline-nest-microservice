@@ -1,10 +1,28 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule, MongooseModuleAsyncOptions } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { CONFIG_VALIDATION_OPTION, CONFIG_VALIDATION_SCHEMA } from './common_utils/constant';
 
 @Module({
-  imports: [],
+  imports: [
+    ConfigModule.forRoot({
+      validationSchema: CONFIG_VALIDATION_SCHEMA,
+      validationOptions: CONFIG_VALIDATION_OPTION
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) =>
+      ({
+        uri: configService.get('DB_URL'),
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      } as MongooseModuleAsyncOptions),
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
