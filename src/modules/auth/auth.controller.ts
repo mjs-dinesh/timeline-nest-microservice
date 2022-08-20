@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, HttpStatus } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 import { UserSecurityService } from '../user_security/user_security.service';
 import { AuthService } from './auth.service';
@@ -53,6 +53,7 @@ export class AuthController {
       };
     } else {
       return {
+        statusCode: HttpStatus.NOT_ACCEPTABLE,
         message: 'Invalid OTP',
       };
     }
