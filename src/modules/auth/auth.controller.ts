@@ -1,5 +1,6 @@
 import { Controller, HttpStatus } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
+import { TOKEN_TYPE } from 'src/utils/helper/interface.helper';
 import { UserSecurityService } from '../user_security/user_security.service';
 import { AuthService } from './auth.service';
 import { DisableGauthDto } from './dto/disable_gauth.dto';
@@ -45,6 +46,7 @@ export class AuthController {
     const isValidOTP = await this.userSecurityService.verifyOTP(
       body.type,
       body,
+      TOKEN_TYPE.LONG,
     );
     if (isValidOTP) {
       return {
