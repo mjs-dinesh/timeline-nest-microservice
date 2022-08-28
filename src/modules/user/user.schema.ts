@@ -20,10 +20,22 @@ export class User {
   email: string;
 
   @Prop({
-    name: 'name',
+    name: 'first_name',
     type: String,
   })
-  name: string;
+  first_name: string;
+
+  @Prop({
+    name: 'last_name',
+    type: String,
+  })
+  last_name: string;
+
+  @Prop({
+    name: 'profile_picture',
+    type: String,
+  })
+  profile_picture: string;
 
   @Prop({
     name: 'phone',
