@@ -10,6 +10,7 @@ import {
 import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 import { UserSecurityModule } from './modules/user_security/user_security.module';
+// _MI_
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { UserSecurityModule } from './modules/user_security/user_security.module
     AuthModule,
     UserModule,
     UserSecurityModule,
+    // _M_
   ],
   controllers: [AppController],
   providers: [AppService],
