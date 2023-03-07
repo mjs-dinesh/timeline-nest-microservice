@@ -1,6 +1,7 @@
 import { Controller } from '@nestjs/common';
 import { MessagePattern } from '@nestjs/microservices';
 import { GetUserWithToken } from './dto/get_user_with_token';
+import { UserEditDto } from './dto/user_edit.dto';
 import { UserService } from './user.service';
 
 @Controller('user')
@@ -25,5 +26,11 @@ export class Usercontroller {
   @MessagePattern('is_user_exist')
   public async isUserExist(body: any) {
     return await this.userService.getUserWithId(body.user_id);
+  }
+
+  @MessagePattern('user_edit')
+  public async userEdit(body: UserEditDto) {
+    const { user_id, ...userBody } = body;
+    return await this.userService.userEdit(user_id, userBody);
   }
 }

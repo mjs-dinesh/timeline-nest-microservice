@@ -3,11 +3,10 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class AppService {
   ping(): string {
-    return 'Pong'
+    return 'Pong';
   }
 
   time(): string {
-    return new Date().toString()
+    return new Date().toString();
   }
 }
-

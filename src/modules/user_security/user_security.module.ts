@@ -5,6 +5,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MailService } from '../mail/mail.service';
 import { SMSService } from '../sms/sms.service';
+import { UserSchema } from '../user/user.schema';
 import { UserSecuritySchema } from './user_security.schema';
 import { UserSecurityService } from './user_security.service';
 
@@ -12,6 +13,7 @@ import { UserSecurityService } from './user_security.service';
   imports: [
     MongooseModule.forFeature([
       { name: 'user_securities', schema: UserSecuritySchema },
+      { name: 'users', schema: UserSchema },
     ]),
     JwtModule.registerAsync({
       imports: [ConfigModule],

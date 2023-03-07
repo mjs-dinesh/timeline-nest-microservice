@@ -4,15 +4,15 @@ import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) { }
+  constructor(private readonly appService: AppService) {}
 
   @MessagePattern('ping')
   async ping() {
-    return this.appService.ping()
+    return this.appService.ping();
   }
 
   @MessagePattern('time')
   async time() {
-    return this.appService.time()
+    return this.appService.time();
   }
 }

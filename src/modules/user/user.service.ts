@@ -15,4 +15,10 @@ export class UserService {
   public async getUser(query) {
     return await this.userModel.findOne(query).lean();
   }
+
+  public async userEdit(userId, body) {
+    return await this.userModel
+      .findByIdAndUpdate(userId, { $set: body }, { new: true })
+      .lean();
+  }
 }

@@ -48,6 +48,12 @@ export class User {
     type: String,
   })
   phone_code: string;
+
+  @Prop({
+    name: 'country',
+    type: String,
+  })
+  country: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

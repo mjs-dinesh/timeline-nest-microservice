@@ -17,6 +17,8 @@ export class UserSecurityService {
   constructor(
     @InjectModel('user_securities')
     private readonly UserSecurityModel: Model<unknown>,
+    @InjectModel('users')
+    private readonly UserModel: Model<unknown>,
     private readonly jwtService: JwtService,
     private readonly mailService: MailService,
     private readonly smsService: SMSService,
@@ -53,11 +55,13 @@ export class UserSecurityService {
     let body = {};
     body[`${type}_verification_token`] = secret;
     await this.updateUserSecurity({ user_id: userId }, body);
+    const user: any = await this.UserModel.findOne({ _id: userId }).lean();
+    if (!user) return false;
     if (type === 'email') {
-      this.mailService.emitEvent('mail_send', otp);
+      this.mailService.emitEvent('mail_send', { email: user.email, otp });
     }
     if (type === 'phone') {
-      this.smsService.emitEvent('sms_send', otp);
+      this.smsService.emitEvent('sms_send', { phone: user.phone, otp });
     }
     return true;
   }

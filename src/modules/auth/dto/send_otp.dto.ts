@@ -1,6 +1,6 @@
-import { IsNotEmpty } from "class-validator";
+import { IsNotEmpty } from 'class-validator';
 
-export class SendOTPDto{
+export class SendOTPDto {
   @IsNotEmpty()
-  user_id: string
+  user_id: string;
 }

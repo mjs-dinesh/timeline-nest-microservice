@@ -1,2 +1,2 @@
-export { Paginator } from './paginator'
-export { QueryDto } from './query.dto'
+export { Paginator } from './paginator';
+export { QueryDto } from './query.dto';

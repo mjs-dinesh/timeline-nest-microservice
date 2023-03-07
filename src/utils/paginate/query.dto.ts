@@ -1,16 +1,16 @@
-import { Transform } from 'class-transformer'
-import { IsInt, IsOptional } from 'class-validator'
+import { Transform } from 'class-transformer';
+import { IsInt, IsOptional } from 'class-validator';
 
 export class QueryDto {
   @IsOptional()
   @Transform((v: any) => {
-    return parseInt(v.value)
+    return parseInt(v.value);
   })
-  page: number = 1
+  page: number = 1;
 
   @IsOptional()
   @Transform((v: any) => {
-    return parseInt(v.value)
+    return parseInt(v.value);
   })
-  limit: number = 20
+  limit: number = 20;
 }

@@ -1,4 +1,5 @@
-import { IsEmail, IsNotEmpty } from 'class-validator';
+import { Expose, Transform } from 'class-transformer';
+import { IsEmail, IsNotEmpty, IsOptional } from 'class-validator';
 
 export class SignupDto {
   @IsNotEmpty()
@@ -7,4 +8,11 @@ export class SignupDto {
 
   @IsNotEmpty()
   password: string;
+
+  @IsOptional()
+  @Expose()
+  @Transform(({ obj }) => {
+    return obj?.email.split('@')[0] || '';
+  })
+  first_name: string;
 }
