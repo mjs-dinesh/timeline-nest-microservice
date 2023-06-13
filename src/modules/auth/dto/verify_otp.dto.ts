@@ -1,6 +1,7 @@
 import { IsNotEmpty } from 'class-validator';
+import { DeviceInfoValidation } from './device_info.dto';
 
-export class VerifyOTPDto {
+export class VerifyOTPDto extends DeviceInfoValidation {
   @IsNotEmpty()
   type: string;
 

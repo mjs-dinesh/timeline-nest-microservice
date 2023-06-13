@@ -1,10 +1,13 @@
 import { IsNotEmpty } from 'class-validator';
 import { DeviceInfoValidation } from './device_info.dto';
 
-export class ResetPasswordDto extends DeviceInfoValidation {
+export class ChangePassword extends DeviceInfoValidation {
   @IsNotEmpty()
-  password: string;
+  user_id;
 
   @IsNotEmpty()
-  user_id: string;
+  password;
+
+  @IsNotEmpty()
+  old_password;
 }

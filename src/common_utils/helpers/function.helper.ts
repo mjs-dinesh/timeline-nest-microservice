@@ -7,6 +7,10 @@ export const hashPassword = async (password) => {
   return await bcrypt.hash(password, salt);
 };
 
+export const isValidPassword = async (password, hash) => {
+  return await bcrypt.compare(password, hash);
+};
+
 const generateHOTP = (secret, counter) => {
   const decodedSecret = base32.decode.asBytes(secret);
   const buffer = Buffer.alloc(8);
@@ -49,6 +53,5 @@ export const GenerateTOTP = (secret, seconds = 120) => {
 };
 
 export const VerifyTOTP = (totp, secret, seconds = 120) => {
-  console.log(`${totp}`, `${GenerateTOTP(secret, seconds)}`, secret);
   return `${totp}` === `${GenerateTOTP(secret, seconds)}`;
 };

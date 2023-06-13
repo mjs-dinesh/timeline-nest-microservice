@@ -13,6 +13,7 @@ import { ResetPasswordDto } from './dto/reset_password.dto';
 import { SendOTPDto } from './dto/send_otp.dto';
 import { SignupDto } from './dto/sign_up.dto';
 import { VerifyOTPDto } from './dto/verify_otp.dto';
+import { ChangePassword } from './dto/change_password';
 
 @Controller()
 export class AuthController {
@@ -29,6 +30,11 @@ export class AuthController {
   @MessagePattern('login')
   public async login(body: LoginDto) {
     return this.authService.login(body);
+  }
+
+  @MessagePattern('change_password')
+  public async changePassword(body: ChangePassword) {
+    return this.authService.changePassword(body);
   }
 
   @MessagePattern('forgot_password')
