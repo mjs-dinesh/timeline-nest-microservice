@@ -28,6 +28,7 @@ export class User {
   @Prop({
     name: 'last_name',
     type: String,
+    default: '',
   })
   last_name: string;
 
@@ -51,9 +52,17 @@ export class User {
 
   @Prop({
     name: 'country',
+    default: 'India',
     type: String,
   })
   country: string;
+
+  @Prop({
+    name: 'currency',
+    default: 'INR',
+    type: String,
+  })
+  currency: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
