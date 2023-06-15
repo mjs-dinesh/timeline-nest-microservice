@@ -10,6 +10,7 @@ import {
 import { AuthModule } from './modules/auth/auth.module';
 import { UserModule } from './modules/user/user.module';
 import { UserSecurityModule } from './modules/user_security/user_security.module';
+import { TimeLineModule } from './modules/time_line/time_line.module';
 // _MI_
 
 @Module({
@@ -31,6 +32,7 @@ import { UserSecurityModule } from './modules/user_security/user_security.module
     AuthModule,
     UserModule,
     UserSecurityModule,
+    TimeLineModule,
     // _M_
   ],
   controllers: [AppController],
