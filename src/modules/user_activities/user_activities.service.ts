@@ -48,7 +48,7 @@ export class UserActivitiesService {
   public async delete(id) {
     await this.UseractivityModel.findByIdAndUpdate(
       id,
-      { $set: { delete_at: Date.now() } },
+      { $set: { deleted_at: Date.now() } },
       {
         new: true,
       },

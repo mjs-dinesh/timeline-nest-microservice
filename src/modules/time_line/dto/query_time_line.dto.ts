@@ -29,7 +29,6 @@ export class QueryTimeLineDto extends QueryDto {
   @IsOptional()
   @Expose({ name: 'date' })
   @Transform((v) => {
-    console.log(v?.obj?.date);
     if (v?.obj?.date) {
       return Object.keys(v.obj?.date)?.length !== 0
         ? typeof v.obj?.date === 'string'

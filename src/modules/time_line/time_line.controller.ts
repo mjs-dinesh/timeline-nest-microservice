@@ -43,7 +43,7 @@ export class TimeLineController {
   public async delete(data: DeleteTimeLineDto) {
     await this.TimelineService.delete(data._id);
     return {
-      statusCode: HttpStatus.NO_CONTENT,
+      statusCode: HttpStatus.OK,
     };
   }
 }
